@@ -33,6 +33,14 @@
     });
 
     _listenTouches = function () {
+        //useful for tap event on browser
+        if(MouseEvent != undefined){
+            return $(document.body)
+            .on("mousedown", _onTouchStart)
+            .on("mousemove", _onTouchMove)
+            .on("mouseup", _onTouchEnd)
+            .on("mouseleave", _cleanGesture);    
+        }
         return $(document.body)
             .on("touchstart", _onTouchStart)
             .on("touchmove", _onTouchMove)
